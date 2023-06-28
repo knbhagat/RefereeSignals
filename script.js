@@ -300,6 +300,43 @@ function foulButtons() {
     });
 }
 
+function substitution() {
+    if (animationProgress) {
+        return;
+    }
+    animationProgress = true;
+
+    rightHand.style.transform = "rotateX(150deg)";
+    leftHand.style.transform = "rotateX(150deg)";
+
+    setTimeout(() => {
+        rightHand.style.transform = "rotate(210deg)";
+        leftHand.style.transform = "rotate(-225deg)";
+    }, 750);
+
+    setTimeout(() => {
+        flagStick.style.transform = "rotate(90deg)";
+        flagStick.style.top = "150px";
+        flagStick.style.right = "0px";
+        rightHand.style.transform = "rotate(180deg)";
+        leftHand.style.transform = "rotate(-180deg)";
+    }, 1750);
+
+    setTimeout(() => {
+        rightHand.style.transform = "rotate(210deg)";
+        leftHand.style.transform = "rotate(-225deg)";
+        flagStick.style.transform = "rotate(0deg)";
+        flagStick.style.top = "100px";
+        flagStick.style.right = "40px";
+    }, 4750);
+
+    setTimeout(() => {
+        rightHand.style.transform = "rotateX(0deg)";
+        leftHand.style.transform = "rotateX(0deg)";
+        animationProgress = false;
+    }, 5500);
+}
+
 
 function attachEventListeners() {
 
@@ -308,6 +345,7 @@ function attachEventListeners() {
     const throwIn = document.getElementById("throw-in");
     const cornerKick = document.getElementById("cornerkick")
     const foul = document.getElementById("foul");
+    const sub = document.getElementById("substitution");
 
     goalKick.addEventListener("click", rightHand90);
     offside.addEventListener("click", () => {
@@ -326,6 +364,7 @@ function attachEventListeners() {
             foulButtons();
         }        
     });
+    sub.addEventListener("click", substitution);
 }
 
 attachEventListeners();

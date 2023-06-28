@@ -64,6 +64,8 @@ body {
     right: 40px;
     width: 15px;
     height: 170px;
+    transform-origin: top;
+    transition: transform 1s ease;
     background-color: #000;
   }
   
